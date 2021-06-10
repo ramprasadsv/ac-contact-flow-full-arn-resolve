@@ -35,11 +35,11 @@ pipeline {
             steps {
               script{
                 try{
-                  sh(script: "rm -r ac-flows-via-api", returnStdout: true)
+                  sh(script: "rm -r ac-contact-flow-full-arn-resolve", returnStdout: true)
                 }catch(Exception e){
                   println ("Exception occured " + e.toString())
                 }
-                sh(script: "git clone https://github.com/ramprasadsv/ac-flows-via-api.git", returnStdout: true)
+                sh(script: "git clone https://github.com/ramprasadsv/ac-contact-flow-full-arn-resolve.git", returnStdout: true)
                 sh(script: "ls -ltr", returnStatus: true)
               }
             }
