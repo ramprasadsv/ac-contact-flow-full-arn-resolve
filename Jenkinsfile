@@ -121,10 +121,12 @@ pipeline {
                             {
                                 def obj = content.Actions[i]
                                 if(obj.Type.equals('MessageParticipant')) {
-                                    //handle prompts
-									echo 'Searching for ' + toJSON(obj)
-                                    arn = getPromptId (PRIMARYPROMPTS, obj.Parameters.PromptId, TARGETPROMPTS)
-                                    TARGETJSON = TARGETJSON.replaceAll(obj.Parameters.PromptId, arn)
+                                    //handle prompts which has ARN
+									//echo 'Searching for ' + toJSON(obj)
+									if(obj.Parameters.PromptId != null) {
+										arn = getPromptId (PRIMARYPROMPTS, obj.Parameters.PromptId, TARGETPROMPTS)
+										TARGETJSON = TARGETJSON.replaceAll(obj.Parameters.PromptId, arn)									
+									}
                                 } else if(obj.Type.equals('ConnectParticipantWithLexBot')) {
                                     //handle lex box
                                     
