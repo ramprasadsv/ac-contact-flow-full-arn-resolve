@@ -122,6 +122,7 @@ pipeline {
                                 def obj = content.Actions[i]
                                 if(obj.Type.equals('MessageParticipant')) {
                                     //handle prompts
+									echo 'Searching for ' + obj.Parameters.PromptId
                                     arn = getPromptId (PRIMARYPROMPTS, obj.Parameters.PromptId, TARGETPROMPTS)
                                     TARGETJSON = TARGETJSON.replaceAll(obj.Parameters.PromptId, arn)
                                 } else if(obj.Type.equals('ConnectParticipantWithLexBot')) {
